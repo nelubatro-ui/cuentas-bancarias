@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #2160d4; 
-            --card-bg: rgba(255, 255, 255, 0.25); 
-            --card-hover: rgba(255, 255, 255, 0.35);
+            /* Fondo llamativo con degradado moderno */
+            --bg-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            --card-bg: rgba(255, 255, 255, 0.12); 
+            --card-hover: rgba(255, 255, 255, 0.22);
             --text-color: #ffffff;
             --inner-card-bg: #ffffff;
             --inner-text-color: #1a1a1a;
@@ -17,7 +18,8 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
+            background: var(--bg-gradient);
+            background-attachment: fixed;
             color: var(--text-color);
             min-height: 100vh;
             display: flex;
@@ -27,48 +29,57 @@
         }
         .container { width: 100%; max-width: 520px; text-align: center; }
         .profile-header { margin-bottom: 35px; }
-        .profile-name { font-size: 2rem; font-weight: 500; letter-spacing: 0.5px; line-height: 1.2; margin-bottom: 8px; }
-        .profile-subtitle { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.9; }
+        .profile-name { font-size: 2.2rem; font-weight: 600; letter-spacing: 0.5px; line-height: 1.2; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .profile-subtitle { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #00d2ff; }
         
+        /* Tarjeta Cédula Premium */
         .cedula-card {
-            background: #ffffff; color: #1a1a1a; border-radius: 16px; padding: 15px;
+            background: #ffffff; color: #1a1a1a; border-radius: 16px; padding: 16px;
             margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
         }
         .cedula-card:active { transform: scale(0.98); }
         .cedula-info { text-align: left; }
-        .cedula-label { font-size: 0.75rem; font-weight: bold; color: #666; text-transform: uppercase; }
-        .cedula-number { font-size: 1.2rem; font-weight: bold; color: #2160d4; letter-spacing: 0.5px; }
+        .cedula-label { font-size: 0.75rem; font-weight: bold; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+        .cedula-number { font-size: 1.25rem; font-weight: bold; color: #1d4ed8; letter-spacing: 0.5px; margin-top: 2px; }
         
+        /* Acordeón de Bancos */
         .accordion-item {
             background-color: var(--card-bg); border-radius: 50px; margin-bottom: 16px;
-            overflow: hidden; transition: background-color 0.2s ease, border-radius 0.2s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden; transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .accordion-header { display: flex; align-items: center; padding: 14px 24px; cursor: pointer; user-select: none; position: relative; }
         .accordion-header:hover { background-color: var(--card-hover); }
+        
         .bank-logo {
-            width: 44px; height: 44px; border-radius: 50%; background-color: #ffffff;
-            display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 46px; height: 46px; border-radius: 50%; background-color: #ffffff;
+            display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.15);
         }
-        .bank-logo img { width: 85%; height: 85%; object-fit: contain; }
-        .button-title { flex-grow: 1; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-align: center; padding-right: 20px; }
-        .dots-menu { font-size: 1rem; opacity: 0.5; position: absolute; right: 24px; }
+        .bank-logo img { width: 100%; height: 100%; object-fit: contain; }
+        .button-title { flex-grow: 1; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-align: center; padding-right: 20px; }
+        .dots-menu { font-size: 1rem; opacity: 0.6; position: absolute; right: 26px; }
+        
         .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background-color: #ffffff; color: var(--inner-text-color); text-align: left; }
-        .account-details { padding: 20px 24px; border-bottom: 2px solid #f0f4f8; }
+        .account-details { padding: 20px 24px; border-bottom: 1px solid #eef2f5; }
         .account-details:last-child { border-bottom: none; }
+        
         .copy-box {
-            background-color: #f0f4f8; border: 1px dashed #2160d4; border-radius: 8px;
+            background-color: #f3f4f6; border: 1px dashed #2563eb; border-radius: 8px;
             padding: 12px; margin-top: 8px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background-color 0.2s;
         }
-        .copy-box:hover { background-color: #e1e9f5; }
-        .account-number { font-family: monospace; font-size: 1.1rem; font-weight: bold; color: #2160d4; }
-        .copy-btn { font-size: 0.75rem; font-weight: 700; color: #2160d4; background: #ffffff; padding: 4px 8px; border-radius: 4px; border: 1px solid #2160d4; }
+        .copy-box:hover { background-color: #dbeafe; }
+        .account-number { font-family: 'Courier New', Courier, monospace; font-size: 1.15rem; font-weight: bold; color: #1e40af; }
+        .copy-btn { font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #ffffff; padding: 4px 8px; border-radius: 4px; border: 1px solid #2563eb; }
         
         .open-app-btn {
             width: 100%; background-color: #0038a8; color: white; border: none; border-radius: 8px;
             padding: 12px; margin-top: 12px; font-weight: bold; font-size: 0.95rem; cursor: pointer;
             display: flex; justify-content: center; align-items: center; gap: 8px; transition: background-color 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         .open-app-btn:hover { background-color: #002878; }
         .btn-bhd { background-color: #58af23; }
@@ -81,15 +92,16 @@
         .btn-qik:hover { background-color: #441ca3; }
 
         .detail-row { margin-bottom: 4px; font-size: 0.9rem; }
-        .detail-row span { font-weight: bold; color: #555; }
+        .detail-row span { font-weight: bold; color: #4b5563; }
+        
         .toast {
             position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-            background: #1a1a1a; color: #ffffff; padding: 12px 24px; border-radius: 30px;
-            font-size: 0.85rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); opacity: 0; transition: opacity 0.3s ease; pointer-events: none; z-index: 1000;
+            background: #111827; color: #ffffff; padding: 12px 26px; border-radius: 30px;
+            font-size: 0.85rem; box-shadow: 0 10px 25px rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.3s ease; pointer-events: none; z-index: 1000;
         }
-        .accordion-item.active { border-radius: 24px; }
-        .currency-badge { background: #e2f0d9; color: #385723; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; margin-left: 5px; }
-        .usd-badge { background: #fff2cc; color: #7f6000; }
+        .accordion-item.active { border-radius: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .currency-badge { background: #dcfce7; color: #166534; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; margin-left: 5px; }
+        .usd-badge { background: #fef9c3; color: #854d0e; }
     </style>
 </head>
 <body>
@@ -100,7 +112,7 @@
         <div class="profile-subtitle">Portal de Pagos</div>
     </div>
 
-    <div class="cedula-card" onclick="copyText('22300985656', '¡Cédula copiada para transferencia interbancaria!')">
+    <div class="cedula-card" onclick="copyText('22300985656', '¡Cédula copiada para transferencia!')">
         <div class="cedula-info">
             <div class="cedula-label"><i class="fa-solid fa-id-card"></i> Cédula del Beneficiario</div>
             <div class="cedula-number">223-0098565-6</div>
@@ -111,7 +123,7 @@
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
             <div class="bank-logo">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/descarga%20%281%29-i6RN9wfH9lrjzI83ghIPN1fAVxVm0c.jpg" alt="Popular">
+                <img src="image_5.png" alt="Popular">
             </div>
             <div class="button-title">Banco Popular</div>
             <div class="dots-menu">•••</div>
@@ -134,7 +146,7 @@
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
             <div class="bank-logo">
-                <img src="https://www.bhd.com.do/wps/wcm/connect/bhdcontent/57705141-8fbe-4977-bc6d-495861b58df7/logo-bhd-favicon.png?MOD=AJPERES" alt="BHD">
+                <img src="image_9.png" alt="BHD">
             </div>
             <div class="button-title">Banco BHD</div>
             <div class="dots-menu">•••</div>
@@ -167,7 +179,7 @@
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
             <div class="bank-logo">
-                <img src="https://www.banreservas.com/Estilos%20Visuales/images/favicon.ico" alt="Banreservas">
+                <img src="image_8.png" alt="Banreservas">
             </div>
             <div class="button-title">Banreservas</div>
             <div class="dots-menu">•••</div>
@@ -190,7 +202,7 @@
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
             <div class="bank-logo">
-                <img src="https://www.apap.com.do/wp-content/uploads/2023/11/cropped-Favicon-APAP-32x32.png" alt="APAP">
+                <img src="image_6.png" alt="APAP">
             </div>
             <div class="button-title">Asoc. Popular (APAP)</div>
             <div class="dots-menu">•••</div>
@@ -212,8 +224,8 @@
 
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
-            <div class="bank-logo" style="background-color: #5c27da;">
-                <i class="fa-solid fa-q" style="color: white; font-size: 1.1rem; font-weight: bold;"></i>
+            <div class="bank-logo">
+                <img src="image_7.png" alt="Qik">
             </div>
             <div class="button-title">Qik Banco Digital</div>
             <div class="dots-menu">•••</div>
@@ -269,50 +281,36 @@
         const isAndroid = /android/i.test(userAgent);
         const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
 
+        let targetUrl = "";
+
         if (bank === 'popular') {
-            if (isAndroid) {
-                window.location.href = "intent://transfer#Intent;scheme=popularapp;package=com.bpdrd.popularapp;end";
-            } else if (isIOS) {
-                window.location.href = "https://apps.apple.com/do/app/bpopularelinea/id415610022";
-            } else {
-                window.open("https://www.popularenlinea.com", "_blank");
-            }
+            targetUrl = isAndroid 
+                ? "intent://transfer#Intent;scheme=popularapp;package=com.bpdrd.popularapp;end" 
+                : (isIOS ? "https://apps.apple.com/do/app/bpopularelinea/id415610022" : "https://www.popularenlinea.com");
         } 
         else if (bank === 'bhd') {
-            if (isAndroid) {
-                window.location.href = "intent://#Intent;scheme=bhdmovil;package=com.bhd.bhdmovil;end";
-            } else if (isIOS) {
-                window.location.href = "https://apps.apple.com/do/app/bhd/id1453115474";
-            } else {
-                window.open("https://www.bhd.com.do", "_blank");
-            }
+            targetUrl = isAndroid 
+                ? "intent://#Intent;scheme=bhdmovil;package=com.bhd.bhdmovil;end" 
+                : (isIOS ? "https://apps.apple.com/do/app/bhd/id1453115474" : "https://www.bhd.com.do");
         }
         else if (bank === 'reservas') {
-            if (isAndroid) {
-                window.location.href = "https://play.google.com/store/apps/details?id=com.banreservas.banreservasmovil";
-            } else if (isIOS) {
-                window.location.href = "https://apps.apple.com/do/app/banreservas/id1023223016";
-            } else {
-                window.open("https://www.banreservas.com", "_blank");
-            }
+            targetUrl = isAndroid 
+                ? "https://play.google.com/store/apps/details?id=com.banreservas.banreservasmovil" 
+                : (isIOS ? "https://apps.apple.com/do/app/banreservas/id1023223016" : "https://www.banreservas.com");
         }
         else if (bank === 'apap') {
-            if (isAndroid) {
-                window.location.href = "https://play.google.com/store/apps/details?id=com.apap.movil";
-            } else if (isIOS) {
-                window.location.href = "https://apps.apple.com/do/app/apap-pm/id1251919597";
-            } else {
-                window.open("https://www.apap.com.do", "_blank");
-            }
+            targetUrl = isAndroid 
+                ? "https://play.google.com/store/apps/details?id=com.apap.movil" 
+                : (isIOS ? "https://apps.apple.com/do/app/apap-pm/id1251919597" : "https://www.apap.com.do");
         }
         else if (bank === 'qik') {
-            if (isAndroid) {
-                window.location.href = "intent://#Intent;scheme=qik;package=do.qik.app;end";
-            } else if (isIOS) {
-                window.location.href = "https://apps.apple.com/do/app/qik-banco-digital/id1631557053";
-            } else {
-                window.open("https://qik.com.do", "_blank");
-            }
+            targetUrl = isAndroid 
+                ? "intent://#Intent;scheme=qik;package=do.qik.app;end" 
+                : (isIOS ? "https://apps.apple.com/do/app/qik-banco-digital/id1631557053" : "https://qik.com.do");
+        }
+
+        if (targetUrl) {
+            window.location.replace(targetUrl);
         }
     }
 </script>
