@@ -120,7 +120,7 @@
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
             <div class="bank-logo">
-                <img src="descarga%20(1).jpg" alt="Popular">
+                <img src="banco_popular.jpg" alt="Popular">
             </div>
             <div class="button-title">Banco Popular</div>
             <div class="dots-menu">•••</div>
@@ -134,7 +134,7 @@
                     <span class="copy-btn">COPIAR</span>
                 </div>
                 <button class="open-app-btn" onclick="openApp('popular', event)">
-                    <i class="fa-solid fa-mobile-screen-button"></i> Abrir App Popular
+                    <i class="fa-solid fa-mobile-screen-button"></i> Entrar a Banco Popular
                 </button>
             </div>
         </div>
@@ -143,7 +143,7 @@
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
             <div class="bank-logo">
-                <img src="descarga.jpg" alt="BHD">
+                <img src="banco_bhd.jpg" alt="BHD">
             </div>
             <div class="button-title">Banco BHD</div>
             <div class="dots-menu">•••</div>
@@ -167,7 +167,7 @@
             </div>
             <div style="padding: 0 24px 20px 24px;">
                 <button class="open-app-btn btn-bhd" onclick="openApp('bhd', event)">
-                    <i class="fa-solid fa-mobile-screen-button"></i> Abrir App BHD Móvil
+                    <i class="fa-solid fa-mobile-screen-button"></i> Entrar a BHD Móvil
                 </button>
             </div>
         </div>
@@ -176,7 +176,7 @@
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
             <div class="bank-logo">
-                <img src="descarga%20(2).png" alt="Banreservas">
+                <img src="banreservas.png" alt="Banreservas">
             </div>
             <div class="button-title">Banreservas</div>
             <div class="dots-menu">•••</div>
@@ -190,7 +190,7 @@
                     <span class="copy-btn">COPIAR</span>
                 </div>
                 <button class="open-app-btn btn-reservas" onclick="openApp('reservas', event)">
-                    <i class="fa-solid fa-mobile-screen-button"></i> Abrir App Banreservas
+                    <i class="fa-solid fa-mobile-screen-button"></i> Entrar a Banreservas
                 </button>
             </div>
         </div>
@@ -199,7 +199,7 @@
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
             <div class="bank-logo">
-                <img src="descarga%20(1).png" alt="APAP">
+                <img src="apap.png" alt="APAP">
             </div>
             <div class="button-title">Asoc. Popular (APAP)</div>
             <div class="dots-menu">•••</div>
@@ -213,7 +213,7 @@
                     <span class="copy-btn">COPIAR</span>
                 </div>
                 <button class="open-app-btn btn-apap" onclick="openApp('apap', event)">
-                    <i class="fa-solid fa-mobile-screen-button"></i> Abrir App APAP pm
+                    <i class="fa-solid fa-mobile-screen-button"></i> Entrar a APAP en Línea
                 </button>
             </div>
         </div>
@@ -222,7 +222,7 @@
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
             <div class="bank-logo">
-                <img src="descarga%20(2).jpg" alt="Qik">
+                <img src="banco_qik.jpg" alt="Qik">
             </div>
             <div class="button-title">Qik Banco Digital</div>
             <div class="dots-menu">•••</div>
@@ -236,7 +236,7 @@
                     <span class="copy-btn">COPIAR</span>
                 </div>
                 <button class="open-app-btn btn-qik" onclick="openApp('qik', event)">
-                    <i class="fa-solid fa-mobile-screen-button"></i> Abrir App Qik
+                    <i class="fa-solid fa-mobile-screen-button"></i> Entrar a Qik App
                 </button>
             </div>
         </div>
@@ -274,52 +274,35 @@
     }
     function openApp(bank, event) {
         event.stopPropagation(); 
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        const isAndroid = /android/i.test(userAgent);
-        const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
-
-        let androidIntent = "";
-        let iosScheme = "";
-        let webFallback = "";
+        
+        let scheme = "";
+        let webUrl = "";
 
         if (bank === 'popular') {
-            androidIntent = "intent://#Intent;scheme=popularapp;package=com.bpdrd.popularapp;end";
-            iosScheme = "popularapp://";
-            webFallback = "https://www.popularenlinea.com";
-        } 
-        else if (bank === 'bhd') {
-            androidIntent = "intent://#Intent;scheme=bhdmovil;package=com.bhd.bhdmovil;end";
-            iosScheme = "bhdmovil://";
-            webFallback = "https://www.bhd.com.do";
-        }
-        else if (bank === 'reservas') {
-            androidIntent = "intent://#Intent;scheme=banreservasmovil;package=com.banreservas.banreservasmovil;end";
-            iosScheme = "banreservas://";
-            webFallback = "https://www.banreservas.com";
-        }
-        else if (bank === 'apap') {
-            androidIntent = "intent://#Intent;scheme=apapmovil;package=com.apap.movil;end";
-            iosScheme = "apapmovil://";
-            webFallback = "https://www.apap.com.do";
-        }
-        else if (bank === 'qik') {
-            androidIntent = "intent://#Intent;scheme=qik;package=do.qik.app;end";
-            iosScheme = "qik://";
-            webFallback = "https://qik.com.do";
+            scheme = "popularapp://";
+            webUrl = "https://www.popularenlinea.com";
+        } else if (bank === 'bhd') {
+            scheme = "bhdmovil://";
+            webUrl = "https://www.bhd.com.do";
+        } else if (bank === 'reservas') {
+            scheme = "banreservas://";
+            webUrl = "https://www.banreservas.com";
+        } else if (bank === 'apap') {
+            scheme = "apapmovil://";
+            webUrl = "https://www.apap.com.do";
+        } else if (bank === 'qik') {
+            scheme = "qik://";
+            webUrl = "https://qik.com.do";
         }
 
-        if (isAndroid) {
-            window.location.href = androidIntent;
-        } 
-        else if (isIOS) {
-            window.location.href = iosScheme;
-            setTimeout(function() {
-                window.location.href = webFallback;
-            }, 2500);
-        } 
-        else {
-            window.open(webFallback, '_blank');
-        }
+        // LÓGICA DE REDIRECCIÓN UNIVERSAL SEGURA (iOS y Android)
+        // Intenta abrir la aplicación nativa primero
+        window.location.href = scheme;
+
+        // Si en 1.2 segundos la página sigue activa (significa que la app no abrió), salta a la web
+        setTimeout(function() {
+            window.location.href = webUrl;
+        }, 1200);
     }
 </script>
 </body>
