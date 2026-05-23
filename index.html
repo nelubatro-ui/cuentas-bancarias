@@ -120,7 +120,7 @@
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
             <div class="bank-logo">
-                <img src="image_5.png" alt="Popular">
+                <img src="descarga%20(1).jpg" alt="Popular">
             </div>
             <div class="button-title">Banco Popular</div>
             <div class="dots-menu">•••</div>
@@ -143,7 +143,7 @@
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
             <div class="bank-logo">
-                <img src="image_9.png" alt="BHD">
+                <img src="descarga.jpg" alt="BHD">
             </div>
             <div class="button-title">Banco BHD</div>
             <div class="dots-menu">•••</div>
@@ -176,7 +176,7 @@
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
             <div class="bank-logo">
-                <img src="image_8.png" alt="Banreservas">
+                <img src="descarga%20(2).png" alt="Banreservas">
             </div>
             <div class="button-title">Banreservas</div>
             <div class="dots-menu">•••</div>
@@ -199,7 +199,7 @@
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
             <div class="bank-logo">
-                <img src="image_6.png" alt="APAP">
+                <img src="descarga%20(1).png" alt="APAP">
             </div>
             <div class="button-title">Asoc. Popular (APAP)</div>
             <div class="dots-menu">•••</div>
@@ -222,7 +222,7 @@
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
             <div class="bank-logo">
-                <img src="image_7.png" alt="Qik">
+                <img src="descarga%20(2).jpg" alt="Qik">
             </div>
             <div class="button-title">Qik Banco Digital</div>
             <div class="dots-menu">•••</div>
@@ -278,40 +278,47 @@
         const isAndroid = /android/i.test(userAgent);
         const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
 
-        let scheme = "";
-        let fallback = "";
+        let androidIntent = "";
+        let iosScheme = "";
+        let webFallback = "";
 
         if (bank === 'popular') {
-            scheme = "popularapp://";
-            fallback = "https://www.popularenlinea.com";
+            androidIntent = "intent://#Intent;scheme=popularapp;package=com.bpdrd.popularapp;end";
+            iosScheme = "popularapp://";
+            webFallback = "https://www.popularenlinea.com";
         } 
         else if (bank === 'bhd') {
-            scheme = "bhdmovil://";
-            fallback = "https://www.bhd.com.do";
+            androidIntent = "intent://#Intent;scheme=bhdmovil;package=com.bhd.bhdmovil;end";
+            iosScheme = "bhdmovil://";
+            webFallback = "https://www.bhd.com.do";
         }
         else if (bank === 'reservas') {
-            scheme = "banreservas://";
-            fallback = "https://www.banreservas.com";
+            androidIntent = "intent://#Intent;scheme=banreservasmovil;package=com.banreservas.banreservasmovil;end";
+            iosScheme = "banreservas://";
+            webFallback = "https://www.banreservas.com";
         }
         else if (bank === 'apap') {
-            scheme = "apapmovil://";
-            fallback = "https://www.apap.com.do";
+            androidIntent = "intent://#Intent;scheme=apapmovil;package=com.apap.movil;end";
+            iosScheme = "apapmovil://";
+            webFallback = "https://www.apap.com.do";
         }
         else if (bank === 'qik') {
-            scheme = "qik://";
-            fallback = "https://qik.com.do";
+            androidIntent = "intent://#Intent;scheme=qik;package=do.qik.app;end";
+            iosScheme = "qik://";
+            webFallback = "https://qik.com.do";
         }
 
-        if (isAndroid || isIOS) {
-            // Intenta abrir la app directamente usando su protocolo nativo
-            window.location.href = scheme;
-            
-            // Si la app no responde tras 1.5 segundos, redirige a la web oficial como plan de respaldo estable
+        if (isAndroid) {
+            window.location.href = androidIntent;
+        } 
+        else if (isIOS) {
+            window.location.href = iosScheme;
             setTimeout(function() {
-                window.location.href = fallback;
-            }, 1500);
-        } else {
-            window.open(fallback, '_blank');
+                window.location.href = webFallback;
+            }, 2500);
+        } 
+        else {
+            window.open(webFallback, '_blank');
         }
     }
 </script>
