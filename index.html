@@ -11,8 +11,8 @@
             --card-bg: rgba(255, 255, 255, 0.20); 
             --card-hover: rgba(255, 255, 255, 0.30);
             --text-color: #ffffff;
-            --inner-card-bg: #ffffff;
-            --inner-text-color: #1a1a1a;
+            --inner-card-bg: rgba(255, 255, 255, 0.96);
+            --inner-text-color: #000000; 
             --accent-color: #00d2ff;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,10 +40,10 @@
         .profile-name { font-size: 2.2rem; font-weight: 600; letter-spacing: 0.5px; line-height: 1.2; margin-bottom: 8px; text-shadow: 0 4px 8px rgba(0,0,0,0.6); }
         .profile-subtitle { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-color); text-shadow: 0 2px 4px rgba(0,0,0,0.6); }
         
-        /* Tarjeta de Cédula con Cristal Esmerilado */
+        /* Tarjeta de Cédula */
         .cedula-card {
-            background: rgba(255, 255, 255, 0.90); 
-            color: #1a1a1a; border-radius: 16px; padding: 16px;
+            background: rgba(255, 255, 255, 0.95); 
+            color: #000000; border-radius: 16px; padding: 16px;
             margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
             backdrop-filter: blur(5px); 
@@ -51,10 +51,10 @@
         }
         .cedula-card:active { transform: scale(0.98); }
         .cedula-info { text-align: left; }
-        .cedula-label { font-size: 0.75rem; font-weight: bold; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
-        .cedula-number { font-size: 1.25rem; font-weight: bold; color: #1d4ed8; letter-spacing: 0.5px; margin-top: 2px; }
+        .cedula-label { font-size: 0.75rem; font-weight: 800; color: #333333; text-transform: uppercase; letter-spacing: 0.5px; }
+        .cedula-number { font-size: 1.3rem; font-weight: 900; color: #1d4ed8; letter-spacing: 0.5px; margin-top: 2px; }
         
-        /* Acordeones con Efecto Frosted Glass */
+        /* Acordeones */
         .accordion-item {
             background-color: var(--card-bg); border-radius: 50px; margin-bottom: 16px;
             overflow: hidden; transition: all 0.3s ease;
@@ -74,45 +74,33 @@
         .button-title { flex-grow: 1; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-align: center; padding-right: 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
         .dots-menu { font-size: 1rem; opacity: 0.7; position: absolute; right: 26px; }
         
-        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background-color: rgba(255, 255, 255, 0.95); color: var(--inner-text-color); text-align: left; border-radius: 0 0 24px 24px; }
-        .account-details { padding: 20px 24px; border-bottom: 1px solid #eef2f5; }
-        .account-details:last-child { border-bottom: none; }
+        /* Contenido Interno */
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background-color: var(--inner-card-bg); color: var(--inner-text-color); text-align: left; border-radius: 0 0 24px 24px; }
+        .account-details { padding: 20px 24px; border-bottom: 1px solid #d1d5db; font-weight: 700; } 
+        .account-details:last-child { border-bottom: none; padding-bottom: 20px; }
         
         .copy-box {
             background-color: #f3f4f6; border: 1px dashed #2563eb; border-radius: 8px;
             padding: 12px; margin-top: 8px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background-color 0.2s;
         }
         .copy-box:hover { background-color: #dbeafe; }
-        .account-number { font-family: 'Courier New', Courier, monospace; font-size: 1.15rem; font-weight: bold; color: #1e40af; }
-        .copy-btn { font-size: 0.75rem; font-weight: 700; color: #2563eb; background: #ffffff; padding: 4px 8px; border-radius: 4px; border: 1px solid #2563eb; }
+        .account-number { font-family: 'Courier New', Courier, monospace; font-size: 1.25rem; font-weight: 900; color: #1e40af; }
+        .copy-btn { font-size: 0.75rem; font-weight: 800; color: #2563eb; background: #ffffff; padding: 6px 10px; border-radius: 4px; border: 1px solid #2563eb; text-transform: uppercase; }
         
-        .open-app-btn {
-            width: 100%; background-color: #0038a8; color: white; border: none; border-radius: 8px;
-            padding: 12px; margin-top: 12px; font-weight: bold; font-size: 0.95rem; cursor: pointer;
-            display: flex; justify-content: center; align-items: center; gap: 8px; transition: background-color 0.2s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .open-app-btn:hover { background-color: #002878; }
-        .btn-bhd { background-color: #58af23; }
-        .btn-bhd:hover { background-color: #43871a; }
-        .btn-reservas { background-color: #0066b2; }
-        .btn-reservas:hover { background-color: #004d85; }
-        .btn-apap { background-color: #e30613; }
-        .btn-apap:hover { background-color: #b5050f; }
-        .btn-qik { background-color: #5c27da; }
-        .btn-qik:hover { background-color: #441ca3; }
-
-        .detail-row { margin-bottom: 4px; font-size: 0.9rem; }
-        .detail-row span { font-weight: bold; color: #4b5563; }
+        .detail-row { margin-bottom: 6px; font-size: 0.95rem; color: #000000; }
+        .detail-row span { font-weight: 900; color: #000000; } 
         
+        /* Toast de confirmación con diseño centrado y elegante */
         .toast {
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-            background: #111827; color: #ffffff; padding: 12px 26px; border-radius: 30px;
-            font-size: 0.85rem; box-shadow: 0 10px 25px rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.3s ease; pointer-events: none; z-index: 1000;
+            position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%);
+            background: #111827; color: #ffffff; padding: 14px 28px; border-radius: 30px;
+            font-size: 0.95rem; font-weight: bold; box-shadow: 0 10px 25px rgba(0,0,0,0.4); 
+            opacity: 0; transition: opacity 0.3s ease; pointer-events: none; z-index: 1000;
+            text-align: center; white-space: nowrap;
         }
         .accordion-item.active { border-radius: 24px; box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
-        .currency-badge { background: #dcfce7; color: #166534; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; margin-left: 5px; }
-        .usd-badge { background: #fef9c3; color: #854d0e; }
+        .currency-badge { background: #059669; color: #ffffff; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 900; margin-left: 5px; }
+        .usd-badge { background: #ca8a04; color: #ffffff; }
     </style>
 </head>
 <body>
@@ -123,7 +111,7 @@
         <div class="profile-subtitle">Portal de Pagos</div>
     </div>
 
-    <div class="cedula-card" onclick="copyText('22300985656', '¡Cédula copiada para transferencia!')">
+    <div class="cedula-card" onclick="copyText('22300985656', 'Gracias por preferirnos')">
         <div class="cedula-info">
             <div class="cedula-label"><i class="fa-solid fa-id-card"></i> Cédula del Beneficiario</div>
             <div class="cedula-number">223-0098565-6</div>
@@ -143,13 +131,10 @@
             <div class="account-details">
                 <div class="detail-row"><span>Beneficiario:</span> Nestor Luis Baez Troncoso</div>
                 <div class="detail-row"><span>Tipo:</span> Ahorros <span class="currency-badge">DOP</span></div>
-                <div class="copy-box" onclick="copyText('764591970', '¡Número de cuenta Popular copiado!', event)">
+                <div class="copy-box" onclick="copyText('764591970', 'Gracias por preferirnos', event)">
                     <span class="account-number">764591970</span>
                     <span class="copy-btn">COPIAR</span>
                 </div>
-                <button class="open-app-btn" onclick="openApp('popular', event)">
-                    <i class="fa-solid fa-mobile-screen-button"></i> Entrar a Banco Popular
-                </button>
             </div>
         </div>
     </div>
@@ -166,7 +151,7 @@
             <div class="account-details">
                 <div class="detail-row"><span>Beneficiario:</span> Nestor Luis Baez Troncoso</div>
                 <div class="detail-row"><span>Tipo:</span> Ahorros <span class="currency-badge">DOP</span></div>
-                <div class="copy-box" onclick="copyText('14074180014', '¡Cuenta BHD Pesos copiada!', event)">
+                <div class="copy-box" onclick="copyText('14074180014', 'Gracias por preferirnos', event)">
                     <span class="account-number">14074180014</span>
                     <span class="copy-btn">COPIAR</span>
                 </div>
@@ -174,15 +159,10 @@
             <div class="account-details">
                 <div class="detail-row"><span>Beneficiario:</span> Nestor Luis Baez Troncoso</div>
                 <div class="detail-row"><span>Tipo:</span> Ahorros <span class="currency-badge usd-badge">USD</span></div>
-                <div class="copy-box" onclick="copyText('14074180031', '¡Cuenta BHD Dólares copiada!', event)">
+                <div class="copy-box" onclick="copyText('14074180031', 'Gracias por preferirnos', event)">
                     <span class="account-number">14074180031</span>
                     <span class="copy-btn">COPIAR</span>
                 </div>
-            </div>
-            <div style="padding: 0 24px 20px 24px;">
-                <button class="open-app-btn btn-bhd" onclick="openApp('bhd', event)">
-                    <i class="fa-solid fa-mobile-screen-button"></i> Entrar a BHD Móvil
-                </button>
             </div>
         </div>
     </div>
@@ -199,13 +179,10 @@
             <div class="account-details">
                 <div class="detail-row"><span>Beneficiario:</span> Nestor Luis Baez Troncoso</div>
                 <div class="detail-row"><span>Tipo:</span> Ahorros <span class="currency-badge">DOP</span></div>
-                <div class="copy-box" onclick="copyText('1640548313', '¡Cuenta Banreservas copiada!', event)">
+                <div class="copy-box" onclick="copyText('1640548313', 'Gracias por preferirnos', event)">
                     <span class="account-number">1640548313</span>
                     <span class="copy-btn">COPIAR</span>
                 </div>
-                <button class="open-app-btn btn-reservas" onclick="openApp('reservas', event)">
-                    <i class="fa-solid fa-mobile-screen-button"></i> Entrar a Banreservas
-                </button>
             </div>
         </div>
     </div>
@@ -222,13 +199,10 @@
             <div class="account-details">
                 <div class="detail-row"><span>Beneficiario:</span> Nestor Luis Baez Troncoso</div>
                 <div class="detail-row"><span>Tipo:</span> Ahorros <span class="currency-badge">DOP</span></div>
-                <div class="copy-box" onclick="copyText('1020182709', '¡Cuenta APAP copiada!', event)">
+                <div class="copy-box" onclick="copyText('1020182709', 'Gracias por preferirnos', event)">
                     <span class="account-number">1020182709</span>
                     <span class="copy-btn">COPIAR</span>
                 </div>
-                <button class="open-app-btn btn-apap" onclick="openApp('apap', event)">
-                    <i class="fa-solid fa-mobile-screen-button"></i> Entrar a APAP Móvil
-                </button>
             </div>
         </div>
     </div>
@@ -245,20 +219,17 @@
             <div class="account-details">
                 <div class="detail-row"><span>Beneficiario:</span> Nestor Luis Baez Troncoso</div>
                 <div class="detail-row"><span>Tipo:</span> Ahorros <span class="currency-badge">DOP</span></div>
-                <div class="copy-box" onclick="copyText('1007393713', '¡Cuenta Qik copiada!', event)">
+                <div class="copy-box" onclick="copyText('1007393713', 'Gracias por preferirnos', event)">
                     <span class="account-number">1007393713</span>
                     <span class="copy-btn">COPIAR</span>
                 </div>
-                <button class="open-app-btn btn-qik" onclick="openApp('qik', event)">
-                    <i class="fa-solid fa-mobile-screen-button"></i> Entrar a Qik App
-                </button>
             </div>
         </div>
     </div>
 
 </div>
 
-<div class="toast" id="toast">¡Copiado con éxito!</div>
+<div class="toast" id="toast">Gracias por preferirnos</div>
 
 <script>
     function toggleAccordion(header) {
@@ -285,55 +256,6 @@
             toast.style.opacity = '1';
             setTimeout(() => { toast.style.opacity = '0'; }, 2500);
         });
-    }
-    function openApp(bank, event) {
-        event.stopPropagation(); 
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        const isAndroid = /android/i.test(userAgent);
-        const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
-
-        let androidIntent = "";
-        let iosScheme = "";
-        let webFallback = "";
-
-        if (bank === 'popular') {
-            androidIntent = "intent://#Intent;scheme=popularapp;package=com.bpdrd.popularapp;end";
-            iosScheme = "popularapp://";
-            webFallback = "https://www.popularenlinea.com";
-        } 
-        else if (bank === 'bhd') {
-            androidIntent = "intent://#Intent;scheme=bhdmovil;package=com.bhd.bhdmovil;end";
-            iosScheme = "bhdmovil://";
-            webFallback = "https://www.bhd.com.do";
-        }
-        else if (bank === 'reservas') {
-            androidIntent = "intent://#Intent;scheme=banreservasmovil;package=com.banreservas.banreservasmovil;end";
-            iosScheme = "banreservas://";
-            webFallback = "https://www.banreservas.com";
-        }
-        else if (bank === 'apap') {
-            androidIntent = "intent://#Intent;scheme=apapmovil;package=com.apap.movil;end";
-            iosScheme = "apapmovil://";
-            webFallback = "https://www.apap.com.do";
-        }
-        else if (bank === 'qik') {
-            androidIntent = "intent://#Intent;scheme=qik;package=do.qik.app;end";
-            iosScheme = "qik://";
-            webFallback = "https://qik.com.do";
-        }
-
-        if (isAndroid) {
-            window.location.href = androidIntent;
-        } 
-        else if (isIOS) {
-            window.location.href = iosScheme;
-            setTimeout(function() {
-                window.location.href = webFallback;
-            }, 2500);
-        } 
-        else {
-            window.open(webFallback, '_blank');
-        }
     }
 </script>
 </body>
